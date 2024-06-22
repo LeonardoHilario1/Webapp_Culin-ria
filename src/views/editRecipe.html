@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Editar Receita</title>
+  <link rel="stylesheet" type="text/css" href="/styles/global.css">
+  <link rel="stylesheet" type="text/css" href="/styles/recipe.css">
+</head>
+<body>
+  <div class="recipe-container">
+    <h2>Editar Receita</h2>
+    <form action="/recipes/<%= recipe.id %>/edit" method="post">
+      <div class="input-group">
+        <label for="title">Título:</label>
+        <input type="text" id="title" name="title" value="<%= recipe.title %>" required>
+      </div>
+      <div class="input-group">
+        <label for="ingredients">Ingredientes:</label>
+        <textarea id="ingredients" name="ingredients" required><%= recipe.ingredients %></textarea>
+      </div>
+      <button type="submit">Salvar</button>
+    </form>
+  </div>
+</body>
+</html>

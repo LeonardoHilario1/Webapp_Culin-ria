@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= recipe.title %></title>
+  <link rel="stylesheet" type="text/css" href="/styles/global.css">
+  <link rel="stylesheet" type="text/css" href="/styles/comment.css">
+</head>
+<body>
+  <div class="comment-container">
+    <h2><%= recipe.title %></h2>
+    <p><%= recipe.ingredients %></p>
+    
+    <!-- Formulário para adicionar comentário -->
+    <form action="/recipes/<%= recipe.id %>/comments" method="post">
+      <div class="input-group">
+        <label for="comment">Comentário:</label>
+        <textarea id="comment" name="content" required></textarea>
+      </div>
+      <button type="submit">Adicionar Comentário</button>
+    </form>
+
+    <!-- Exibir comentários -->
+    <h3>Comentários</h3>
+    <ul>
+      <% comments.forEach(comment => { %>
+        <li><%= comment.content %> - <%= comment.createdAt.toLocaleString() %></li>
+      <% }); %>
+    </ul>
+
+    <div class="links">
+      <a href="/recipes" class="link">Voltar para receitas</a>
+      <form action="/recipes/<%= recipe.id %>/delete" method="post" style="display:inline;">
+        <button type="submit">Excluir Receita</button>
+      </form>
+      <a href="/recipes/<%= recipe.id %>/edit" class="link">Editar Receita</a>
+    </div>
+  </div>
+</body>
+</html>
